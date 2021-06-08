@@ -2,15 +2,25 @@ name: Build and Push Docker Image
 
 on: [push]
 
+# Ensure only the most recent workflow runs
+concurrency: 
+  group: von-network
+  cancel-in-progress: true
+
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
 
-      - name: Check Repo name
+      - name: Check Repository Context
         run: |
           echo ${{ github.event.repository.full_name }}
+          if [ ${{ github.event.repository.full_name }} != "bcgov/von-network" ]; then
+            echo "This build is NOT running in the context of the bcgov/von-network repository ..."
+          else
+            echo "This build IS running in the context of the bcgov/von-network repository ..."
+          fi
 
       - name: Check out the repo
         uses: actions/checkout@v2
