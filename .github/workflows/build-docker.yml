@@ -9,19 +9,10 @@ concurrency:
 
 jobs:
   push_to_registry:
+    if: ${{ github.event.repository.full_name }} == 'bcgov/von-network' }}
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
-
-      - name: Check Repository Context
-        run: |
-          echo ${{ github.event.repository.full_name }}
-          if [ ${{ github.event.repository.full_name }} != "bcgov/von-network" ]; then
-            echo "This build is NOT running in the context of the bcgov/von-network repository ..."
-          else
-            echo "This build IS running in the context of the bcgov/von-network repository ..."
-          fi
-
       - name: Check out the repo
         uses: actions/checkout@v2
 
