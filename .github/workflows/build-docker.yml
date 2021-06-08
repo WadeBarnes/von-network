@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   push_to_registry:
-    if: ${{ github.event.repository.full_name }} == 'bcgov/von-network' }}
+    if: ${{ github.event.repository.full_name == 'bcgov/von-network' }}
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
