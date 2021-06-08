@@ -1,16 +1,17 @@
 name: Build and Push Docker Image
 
-on:
-  push:
-    branches:
-      - main
-      - master # will be renaming soon.
+on: [push]
 
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
+
+      - name: Check Repo name
+        run: |
+          echo ${{ github.event.repository.full_name }}
+
       - name: Check out the repo
         uses: actions/checkout@v2
 
