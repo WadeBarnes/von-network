@@ -25,7 +25,6 @@ dockerCompose="docker-compose --log-level ERROR --build"
 if [[ $(docker compose version 2> /dev/null) == 'Docker Compose'* ]]; then
   dockerCompose="docker --log-level error compose"
 fi
-echo "Using: ${dockerCompose}"
 
 # =================================================================================================================
 # Usage:
