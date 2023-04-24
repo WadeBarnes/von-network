@@ -552,6 +552,7 @@ function generateGenesisFiles() {
 
   echo "Downloading the latest version of ${genesis_from_files_filename} from ${genesis_from_files_url} ..."
   curl -s -L -o ./cli-scripts/${genesis_from_files_filename} ${genesis_from_files_url}
+  chmod +x ./cli-scripts/${genesis_from_files_filename}
 
   # Escape spaces in path ...
   trustee_csv_esc=$(echo ${trustee_csv##*/} | sed 's/ /\\ /g')
